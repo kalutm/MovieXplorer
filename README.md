@@ -1,115 +1,118 @@
-# Movie-Xplorer
+# MovieXplorer
 
-Movie-Xplorer is a Flutter application that allows users to search and discover movies using the TMDB API. Enjoy a clean, responsive interface with options to search by movie title or filter movies by genre, language, release year, and minimum rating.
+MovieXplorer is a Flutter application that allows users to search and explore movies using the TMDB API. The app provides features such as searching by movie title, filtering by genre, language, release year, and rating, as well as detailed movie information and trailer playback.
+
+---
+
+## Repository
+
+You can view the complete source code at:
+[https://github.com/kalutm/MovieXplorer.git](https://github.com/kalutm/MovieXplorer.git)
+
+---
+
+## Android Release (Pre-built APK)
+
+A pre-built release APK for Android devices is available here:
+
+[build/app/outputs/flutter-apk/app-release.apk](https://github.com/kalutm/MovieXplorer/tree/main/build/app/outputs/flutter-apk)
+
+**Installation:**
+
+1. Download the APK file.
+2. Enable "Install from unknown sources" on your Android device.
+3. Install the APK.
 
 ---
 
 ## Features
 
-- **Search by Title:**  
-  Quickly find movies by entering a movie name.
-
-- **Advanced Filtering:**  
-  Filter movies based on genre, language, release year, and minimum rating.
-
-- **Responsive UI:**  
-  Custom layouts with larger movie images and detailed information.
-
-- **Robust Error Handling:**  
-  Comprehensive error handling for network issues, timeouts, and missing data (with fallback images).
-
-- **TMDB Integration:**  
-  Retrieves movie data using the TMDB API.  
-  **Note:** This app is not endorsed by TMDB.
-
-- **Detailed Movie View:**  
-  The detailed results screen is fully implemented, providing complete movie details.
+-   **Search and Discovery:** Search for movies by title or filter by genre, language, release year, and minimum rating.
+-   **Detailed Movie Information:** Get comprehensive details about each movie.
+-   **Trailer Playback:** Watch movie trailers with integrated YouTube playback.
+-   **Responsive UI:** Enjoy a clean and responsive interface built with Flutter.
 
 ---
 
-## Getting the App
+## Getting Started (Local Development)
 
-### For Most Users (Download the APK)
+If you wish to run or modify the project locally, follow these steps:
 
-A pre-built release APK is available for Android devices. Download and install the APK directly without needing to run the app from your computer.
+1.  **Clone the Repository:**
 
-- **Download Location:**  
-  `build/app/outputs/flutter-apk/app-release.apk`
+    ```bash
+    git clone [https://github.com/kalutm/MovieXplorer.git](https://github.com/kalutm/MovieXplorer.git)
+    cd MovieXplorer
+    ```
 
-Transfer the APK file to your Android device and install it (ensure that installation from unknown sources is enabled in your device settings).
+2.  **Install Dependencies:**
+
+    ```bash
+    flutter pub get
+    ```
+
+3.  **Pass the TMDB API Key:**
+
+    Instead of using a `.env` file, pass your TMDB API key using `dart-define`. Replace `your_api_key_here` with your actual TMDB API key.
+
+    **Run the App:**
+
+    ```bash
+    flutter run --dart-define=API_KEY=your_api_key_here
+    ```
+
+    **Build the Release APK:**
+
+    ```bash
+    flutter build apk --dart-define=API_KEY=your_api_key_here
+    ```
+
+4.  **Configure Assets:**
+
+    Ensure that your assets (e.g., logo images) are properly declared in your `pubspec.yaml` file.
 
 ---
 
-### For Developers or Those Who Wish to Build from Source
+## Project Structure
 
-If you prefer to run or modify the source code, follow these steps:
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/kalutm/Movie-Xplorer.git
-   cd Movie-Xplorer
-## Install Dependencies
-
-Run the following command in your project directory:
-
-```bash
-flutter pub get
-Pass the API Key via Environment Variable
-Instead of using a .env file, pass your TMDB API key via dart-define. Replace your_api_key_here with your actual API key.
-
-To run the app:
-
-bash
-Copy
-Edit
-flutter run --dart-define=API_KEY=your_api_key_here
-To build the release APK:
-
-bash
-Copy
-Edit
-flutter build apk --dart-define=API_KEY=your_api_key_here
-Configure Assets
-Ensure that your pubspec.yaml file includes the asset directory (e.g., the logo image):
-
-yaml
-Copy
-Edit
-flutter:
-  assets:
-    - assets/icon/logo2.jpg
-Run the App
-Connect your device or start an emulator, then run the app using the dart-define command shown above.
-
-Project Structure
 lib/
-main.dart: App entry point.
-screens/
-welcome.dart: Splash screen displayed at startup.
-home/home.dart: Home screen with search options.
-home/search.dart: Screen for searching movies by title.
-home/search_by_type.dart: Screen for filtering movies by type.
-results.dart: Displays movie search results.
-detailed_results.dart: Shows detailed movie information.
-about.dart: Information about the app and the developer.
-datas/
-movie_class.dart: Movie model and JSON parsing.
-language_codes.dart: Map of language codes to full names.
-drop_down_items.dart: Data for dropdown menus (genres, languages, years, ratings).
-service/
-api_requests.dart: API request methods and image fetching.
-genre_id_to_string.dart: Utility to convert genre IDs to human-readable strings.
-Dependencies
-http
-font_awesome_flutter
-flutter_spinkit
-url_launcher
-Note: The API key is passed via dart-define (use --dart-define=API_KEY=your_api_key_here).
+├── main.dart: App entry point.
+├── screens/
+│   ├── welcome.dart: Splash screen displayed at startup.
+│   ├── home/
+│   │   ├── home.dart: Home screen with search options.
+│   │   ├── search.dart: Screen for searching movies by title.
+│   │   └── search_by_type.dart: Screen for filtering movies by type.
+│   ├── results.dart: Displays movie search results.
+│   ├── detailed_results.dart: Shows detailed movie information.
+│   └── about.dart: Information about the app and the developer.
+├── datas/
+│   ├── movie_class.dart: Movie model and JSON parsing.
+│   ├── language_codes.dart: Map of language codes to full names.
+│   └── drop_down_items.dart: Data for dropdown menus (genres, languages, years, ratings).
+└── service/
+├── api_requests.dart: API request methods and image fetching.
+└── genre_id_to_string.dart: Utility to convert genre ID.
 
-Credits
+
+---
+
+## Dependencies
+
+http: ^1.3.0
+flutter_dotenv: ^5.0.2
+url_launcher: ^6.1.10
+flutter_spinkit: ^5.2.1
+font_awesome_flutter: ^10.1.0
+youtube_player_flutter: ^9.1.1
+
+
+---
+
+## Credits
+
 Developed by Kaleb Tesfahun
 
-This project uses the TMDB API but is not endorsed, certified, or otherwise approved by TMDB.
+**Note:** This project uses the [TMDB API](https://www.themoviedb.org/) but is not endorsed, certified, or otherwise approved by TMDB.
 
-Enjoy exploring movies with Movie-Xplorer!
+Enjoy exploring movies with MovieXplorer!
