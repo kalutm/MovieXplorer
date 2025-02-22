@@ -1,0 +1,40 @@
+# Flutter Specific
+.dart_tool/
+build/
+ios/Pods/
+ios/.symlinks/
+ios/Runner.xcworkspace/
+ios/Flutter/ephemeral/
+android/.gradle/
+android/build/
+android/app/build/
+android/app/.cxx/
+android/app/.externalNativeBuild/
+android/app/src/main/assets/flutter_assets/
+web/build/
+linux/build/
+macos/build/
+windows/build/
+
+# IDE Specific
+.idea/
+.vscode/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# General
+*.log
+*.swp
+*.swo
+*~
+*.bak
+
+# Sensitive Information (if applicable)
+*.env
+*.key
+*.p12
+*.pem
+*.cer
+.env.local
